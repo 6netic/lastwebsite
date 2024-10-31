@@ -1,0 +1,32 @@
+{% extends "mainsite/base.html" %}
+
+{% block content %}
+
+  <div class="album py-5 real-bg">
+    <div class="container">
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+{% for one in realisations %}
+        <div class="col">
+          <div class="card shadow-sm real-projets-bg">
+            <div class="card-body">
+              <p class="card-title h5">{{ one.name }}</p>
+              <p class="card-text">{{ one.description }}</p>
+              <p class="card-text">{{ one.techno }}</p>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                  <button type="button" class="btn btn-sm btn-outline-warning">
+                    <a href="{{ one.url }}" target="_blank" style="text-decoration: none;color: grey;">
+                      Visiter le lien
+                    </a>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+{% endfor %}
+      </div>
+    </div>
+  </div>
+
+{% endblock %}

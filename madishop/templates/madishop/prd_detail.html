@@ -1,0 +1,95 @@
+{% extends "madishop/base.html" %}
+{% load static %}
+{% block content %}
+
+<section class="py-5">
+  <div class="container px-4 px-lg-5 my-5">
+    <div class="row gx-4 gx-lg-5 align-items-center">
+      <div class="col-md-6">
+<!--{ for picture in prd.images.all }-->
+  <!--{ if forloop.first }-->
+{% if imgpath %}
+        <img class="card-img-top mb-5 mb-md-0" src="{{ imgpath }}">
+{% else %}
+        <img class="card-img-top mb-5 mb-md-0" src="" id="img-gallery">
+{% endif %}
+        <br>
+  <!--{ endif }-->
+<!--{ endfor }-->
+      </div>
+      <div class="col-md-6">
+<!--        <div class="small mb-1">SKU: BST-498</div>-->
+        <h1 class="display-5 fw-bolder">{{ prd.article.name }}</h1>
+{% if prd.article.capacity %}
+        <div class="fs-5 mb-5">
+          <span>Contenance : {{ prd.article.capacity }} ml</span>
+        </div>
+{% endif %}
+{% if prd.article.weight %}
+        <div class="fs-5 mb-5">
+          Contenance : {{ prd.article.weight }}
+        </div>
+{% endif %}
+<!-- Afficher toutes les couleurs dispo et leur valeur associée -->
+{% if color_dict %}
+        <!--<div class="fs-5 mb-5">-->
+        <div class="input-group mb-3 select-length">
+          <label class="input-group-text" for="color-select">Couleurs</label>
+          <select class="form-select" id="color-select" name="color-select">
+  {% for key, value in color_dict.items %}
+            <option value="{{ key }}">{{ value }}</option>
+  {% endfor %}
+          </select>
+        </div>
+{% endif %}
+<!-- Afficher toutes les tailles dispo et leur valeur associée -->
+{% if size_dict %}
+        <!--<div class="fs-5 mb-5">-->
+        <div class="input-group mb-3 select-length">
+          <label class="input-group-text" for="size-select">Tailles</label>
+          <select class="form-select" id="size-select" name="size-select">
+  {% for key, value in size_dict.items %}
+            <option value="{{ key }}">{{ value }}</option>
+  {% endfor %}
+          </select>
+        </div>
+{% endif %}
+          <div class="fs-5 mb-5">
+<!--          <span class="text-decoration-line-through">$45.00</span>-->
+            <span>Prix : {{ prd.price }}€</span>
+          </div>
+          <p class="lead">{{ prd.article.desc_full|safe}}</p>
+          <form method="POST">{% csrf_token %}
+            <div class="d-flex">
+              <!--<input
+                class="form-control text-center me-3" id="inputQuantity" type="num" value="1"
+                name="chosenQty" style="max-width: 3rem">-->
+              <input class="form-control text-left me-3" type="number" name="chosenQty" id="chosenQty"
+                     value="1" min="1" max="30" step="1" size="2" style="max-width: 4.3rem">
+              <input type="hidden" id="colorSlt" name="colorSlt" value="">
+              <input type="hidden" id="sizeSlt" name="sizeSlt" value="">
+{% if imgpath_dict %}
+              <input type="hidden" id="imgDict" name="imgDict" value="{{ imgpath_dict }}">
+{% endif %}
+              <a class="btn btn-outline-dark mt-auto"
+                 href="javascript:add_in_cart('{{ prd.article.pk }}', 'val', 'val', 'val');">Ajouter au Panier
+              </a>
+              <!--<button type="submit" class="btn btn-outline-dark flex-shrink-0" type="button">-->
+                <!--<i class="bi-cart-fill me-1"></i>-->
+                <!--Ajouter au Panier
+              </button>-->
+            </div>
+          </form>
+        </div>
+    </div>
+  </div>
+</section>
+
+<div id="overlay"><div id="text"></div></div>
+
+{% endblock %}
+
+{% block js %}
+  <script src="{% static 'madishop/js/color_size_selection.js' %}"></script>
+  <script src="{% static 'madishop/js/add_to_cart_and_confirm.js' %}"></script>
+{% endblock %}

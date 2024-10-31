@@ -1,0 +1,74 @@
+{% extends "madishop/base.html" %}
+{% load static %}
+{% block content %}
+
+<p></p><p></p>
+<div align="center" class="title-page">Panier des achats</div>
+<p></p>
+{% if cart %}
+<form method="POST">
+  {% csrf_token %}
+  <!--<table class="cart-table" id="cart-table">-->
+
+  <div align="center">
+  <div class="col-md-6">
+  <table id="cart-container">
+    <thead>
+      <tr>
+        <th>Article</th>
+        <th>Taille</th>
+        <th>Couleur</th>
+        <th>Quantité</th>
+        <th>Total</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+  {% for line in cart %}
+     <tr id="tr{{ forloop.counter }}">
+        <input type="hidden" id="prdid{{ forloop.counter }}" value="{{ line.product.pk }}">
+        <td id="product{{ forloop.counter }}">{{ line.product }}</td>
+        <td id="size{{ forloop.counter }}">{{ line.product.get_size }}</td>
+        <td id="color{{ forloop.counter }}">{{ line.product.get_color }}</td>
+        <td>
+          <input type="number" id="itemqty{{ forloop.counter }}" value="{{ line.quantity }}"
+                 min="1" max="{{ line.product.in_stock }}" step="1" size="2"
+                 onchange="modifyQuantity(event,
+                   'prdid{{ forloop.counter }}', 'itemqty{{ forloop.counter }}', 'total{{ forloop.counter }}')">
+        </td>
+        <td id="total{{ forloop.counter }}">{{ line.total }} €</td>
+        <td>
+          <img class="trash-icon" src="{% static 'madishop/img/trash.png' %}" alt="Enlever l'article"
+               onclick="deleteArt(event, 'prdid{{ forloop.counter }}', 'tr{{ forloop.counter }}')">
+        </td>
+      </tr>
+  {% endfor %}
+      <tr>
+        <td>Total : </td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td id="total_set">{{ new_total_set }} €</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+</div>
+
+
+</form>
+<p><br><br></p>
+<div align="center">
+  <a class="btn btn-outline-success mt-auto" href="{% url 'madishop:checkout' %}">Accéder au Paiement</a>
+</div>
+
+{% else %}
+  <h4>Votre panier est vide</h4>
+{% endif %}
+
+<p><br><br></p>
+{% endblock %}
+
+{% block js %}
+  <script src="{% static 'madishop/js/modif_del_cart.js' %}"></script>
+{% endblock %}

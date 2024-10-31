@@ -1,0 +1,59 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container px-4 px-lg-5">
+    <a class="navbar-brand" href="{% url 'madishop:home' %}">MadiShop</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button"
+             data-bs-toggle="dropdown" aria-expanded="false">Magasin</a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" href="{% url 'madishop:list_all_prds' %}">Tous les articles</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li>
+              <a class="dropdown-item" href="{% url 'madishop:list_prds_in_category' 'Alcools' %}">Alcools</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="{% url 'madishop:list_prds_in_category' 'E-liquides' %}">E-liquides</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="{% url 'madishop:list_prds_in_category' 'Tee-shirts' %}">Tee-Shirts</a>
+            </li>
+          </ul>
+        </li>
+
+      </ul>
+
+
+      <ul class="navbar-nav d-flex">
+{% if user.is_authenticated %}
+        <li class="nav-item">
+            <span class="nav-link">{{ user.username }}</span>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'madishop:disconnect' %}">Déconnexion</a>
+        </li>
+{% else %}
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'madishop:connect' %}">Se Connecter</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link me-lg-3" href="{% url 'madishop:signup' %}">Créer un compte</a>
+        </li>
+{% endif %}
+      </ul>
+      <form class="d-flex" action="{% url 'madishop:display_cart' %}" method="GET">
+        <button class="btn btn-outline-dark" type="submit">
+        <!--<i class="bi-cart-fill me-1">truc</i>-->
+          Mon Panier
+            <span class="badge bg-dark text-white ms-1 rounded-pill" id="cart_tag">
+                {{ nb_in_cart }}
+            </span>
+        </button>
+      </form>
+    </div>
+  </div>
+</nav>

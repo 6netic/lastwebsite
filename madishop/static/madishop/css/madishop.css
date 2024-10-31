@@ -1,0 +1,134 @@
+/*--------------------------------------------------------------
+# General
+--------------------------------------------------------------*/
+html, body {
+  height: 100%;
+}
+.select-length {
+  width:70%;
+}
+
+#overlay {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  cursor: pointer;
+  display: none;
+  background-color: rgba(0,0,0,0.7);
+  z-index: 3;
+}
+#text{
+  /* position: absolute;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%); */
+  position: relative;
+  top: 50%;
+  text-align: center;
+  font-size: 2em;
+  color: white;
+  border: 2px white solid;
+  margin-left: 30%;
+  margin-right: 30%;
+  padding: 10px 10px 10px 10px;
+}
+.bcrum a {
+    color: white;
+    outline: none;
+    text-decoration: none;
+}
+a {
+    color: grey;
+    outline: none;
+    text-decoration: none;
+}
+.trash-icon {
+    max-height: 25%;
+    max-width: 25%;
+    cursor: pointer;
+}
+.td-width {
+    width: 5%;
+    white-space: nowrap;
+}
+.title-page {
+    color: #2ecc71;
+    font-size: 2em;
+    font-weight: bold;
+    font-family: sans-serif;
+    padding-top: 2rem;
+    padding-bottom: 0.5rem;
+}
+#cart-container {
+    border-collapse: collapse;
+    width: 100%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+}
+#cart-container thead tr {
+    background-color: #009879;
+    color: #ffffff;
+    text-align: left;
+}
+#cart-container th, #cart-container td {
+    padding-left: 3rem;
+    text-align: left;
+    font-size: 0.9em;
+    font-family: sans-serif;
+}
+#cart-container tbody tr {
+    height: 3rem;
+}
+#cart-container tbody tr td {
+    text-align: left;
+    padding-left, padding-right: 3px;
+    min-width: 10%;
+}
+#cart-container td:nth-of-type(1) { font-weight: bold; }
+
+/*--------------------------------------------------------------
+# Media Queries
+--------------------------------------------------------------*/
+@media (min-width: 576px) {
+}
+@media (min-width: 768px) {
+}
+@media (min-width: 992px) {
+    .select-length {
+        width:40%;
+    }
+}
+
+@media (max-width: 768px) {
+    .trash-icon { max-height: 10%; max-width: 10%; cursor: pointer;
+    }
+    #cart-container thead tr {
+        display: none; width: 200px;
+    }
+    #cart-container th, #cart-container td {
+        padding-left: 1rem;
+    }
+    #cart-container td {
+        display: block; border: none; width: 90%; margin: auto;
+    }
+    #cart-container tr {
+        border-bottom: 1px solid #ccc;
+    }
+    #cart-container td:nth-of-type(1) { padding-top: 8px; }
+    #cart-container td:nth-of-type(6) { padding-bottom: 8px; }
+}
+
+
+
+
+
+
+
+
+
+
+
+

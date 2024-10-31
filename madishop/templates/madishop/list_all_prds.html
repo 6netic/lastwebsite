@@ -1,0 +1,63 @@
+{% extends "madishop/base.html" %}
+{% load static %}
+{% block content %}
+
+
+<header style="background-color:#ABB2B9;">
+  <div class="container px-4 px-lg-5 py-2 text-white">
+    <span class="bcrum"><a href="{% url 'madishop:list_all_prds' %}">Tous les articles</a></span>
+  </div>
+</header>
+
+<section class="py-5">
+  <div class="container px-4 px-lg-5 mt-5">
+    <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+
+{% for prd in prds %}
+    <form method="POST">{% csrf_token %}
+      <div class="col mb-5">
+        <div class="card h-100">
+  {% for img in prd.article.images.all %}
+    {% if forloop.first %}
+          <a href="{{ prd.get_absolute_url }}">
+              <img class="card-img-top" src="{{ img.path_1.url }}" alt="...">
+          </a>
+    {% endif %}
+  {% endfor %}
+          <div class="card-body p-4">
+            <div class="text-center">
+              <a href="{% url 'madishop:prd_detail' prd.article.category.name prd.article.pk %}">
+                <h5 class="fw-bolder">{{ prd.article.name }}</h5>
+              </a>
+              {{ prd.price }}€
+            </div>
+          </div>
+          <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+            <div class="text-center">
+  {% if prd.article.category.name|stringformat:'s' == "Tee-shirts" %}
+              <a class="btn btn-outline-dark mt-auto"
+                 href="{% url 'madishop:prd_detail' prd.article.category.name prd.article.pk %}">Afficher Détails
+              </a>
+  {% else %}
+              <a class="btn btn-outline-dark mt-auto"
+                 href="javascript:add_in_cart('{{ prd.article.pk }}', '', '', 1);">Ajouter au Panier
+              </a>
+  {% endif %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+{% endfor %}
+
+    </div>
+  </div>
+</section>
+
+<div id="overlay"><div id="text"></div></div>
+
+{% endblock %}
+
+{% block js %}
+  <script src="{% static 'madishop/js/add_to_cart_and_confirm.js' %}"></script>
+{% endblock %}

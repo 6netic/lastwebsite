@@ -1,0 +1,46 @@
+{% extends "madishop/base.html" %}
+{% load static %}
+{% block content %}
+
+<header class="bg-dark py-1">
+  <div class="container px-4 px-lg-5 my-5">
+    <div class="text-center text-white">
+      <h1 class="display-4 fw-bolder">Madishop</h1>
+      <p class="lead fw-normal text-white-50 mb-0">Visitez notre boutique en ligne</p>
+    </div>
+  </div>
+</header>
+<section class="py-5" style="background-color:black;">
+  <div class="container px-4 px-lg-5">
+    <!--<div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">-->
+
+      <div id="carousel-home" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active" data-bs-interval="2000" align="center">
+            <img src="/media/madishop/carousel/carousel1_wine.jpg" class="d-block w-50" alt="...">
+          </div>
+          <div class="carousel-item" data-bs-interval="2000" align="center">
+            <img src="/media/madishop/carousel/carousel2_vape.jpg" class="d-block w-50" alt="...">
+          </div>
+          <div class="carousel-item" align="center">
+            <img src="/media/madishop/carousel/carousel3_tshirts.jpg" class="d-block w-50" alt="...">
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button"
+                data-bs-target="#carousel-home" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button"
+                data-bs-target="#carousel-home" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+
+    <!--</div>-->
+  </div>
+</section>
+
+{% endblock %}
+
