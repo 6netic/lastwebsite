@@ -1,0 +1,28 @@
+{% extends 'hunting_quizz/base.html' %}
+{% load static %}
+{% block wrapper %}
+<div class="container ">
+  <p></p>
+    <h2 align="center">LES RESULTATS</h2>
+  <div id="results">
+        {% if failed|length > 0 %}
+          <p><b>Le test a échoué. Au moins une question éliminatoire est fausse.</b></p>
+          {% for x, y in failed %}
+            <p>
+              <i>Question : </i>{{ x }}<br/>
+              <i>Explication : </i>{{ y }}<br/>
+            </p>
+          {% endfor %}
+        {% else %}
+          <p>Score : {{score}} / {{nb_of_questions}}</p>
+          <p>Pourcentage : {{percent}}%</p>
+          {% if time_spent %}
+            <p>Temps passé : {{time_spent}}</p>
+          {% endif %}
+            <p>Réponses correctes : {{score}}</p>
+            <p>Mauvaises réponses : {{wrong}}</p>
+            <p>Nombre de questions : {{nb_of_questions}}</p>
+        {% endif %}
+  </div>
+</div>
+{% endblock %}

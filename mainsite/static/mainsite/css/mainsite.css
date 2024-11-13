@@ -68,14 +68,7 @@
   margin: 0 auto 30px auto;
   color: #fff;
 }
-
-
-
-
-
-
 /* ------------------------------------------------------------------------------------------------------- */
-
 #sitetitle {
   font-size: 1.5rem;
   font-weight: bold;
@@ -106,13 +99,20 @@
   padding-top: 1rem;
   margin-right: 2rem;
 }
-#endband {
-  bottom: 0;
-  background: #343a40;
-  color: #eee;
-  padding-bottom: 0.3rem;
-  font-size: 0.8rem;
+.ending {
+  height :40px;
+  width : 100%;
+  background-color: #343a40;
+  position : fixed;
+  bottom : 0px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  text-align: center;
+  font-family: Verdana, Helvetica, sans-serif;
+  font-size: 0.7em;
+  color: #ffffff;
 }
+
 .navbar-nav-custom {
   --bs-nav-link-padding-x: 0;
   --bs-nav-link-padding-y: 0.5rem;
@@ -132,7 +132,16 @@
 .real-projets-bg {
   background-color: #fef9e7;
 }
-
+.card-titre {
+  color: grey;
+  font-family: "Courier New";
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+.card-texte {
+  font-family: "Trebuchet MS";
+  font-size: 0.8rem;
+}
 
 
 /*--------------------------------------------------------------
@@ -151,7 +160,13 @@
     font-size: 1.2rem;
     margin-right: 5rem;
   }
-  #endband {
+  .card-titre {
+    font-family: "Courier New";
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  .card-texte {
+    font-family: "Trebuchet MS";
     font-size: 1rem;
   }
 }

@@ -22,6 +22,8 @@ ALLOWED_HOSTS = [getenv("ALLOWED_HOST_1"), getenv("ALLOWED_HOST_2"), getenv("ALL
 INSTALLED_APPS = [
     'mainsite.apps.MainsiteConfig',
     'madishop.apps.MadishopConfig',
+    # 'purbeurre.apps.PurbeurreConfig',
+    'hunting_quizz.apps.HuntingQuizzConfig',
 
     'django.contrib.admin',
     'django.contrib.auth',

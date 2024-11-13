@@ -1,0 +1,18 @@
+{% extends 'hunting_quizz/base.html' %}
+{% load static %}
+{% block wrapper %}
+<div class="container px-4 px-lg-5 my-5">
+  <p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
+  <div align="center" style="border:1px solid black;border-radius:15px;">
+    <p>&nbsp;</p>
+    <h5>Nombre de questions à poser :</h5>
+    <p>&nbsp;</p>
+    <form method="GET" action="{% url 'hunting_quizz:assisted_quizz' %}">
+      <input class="form-control" type="number" name="nb_of_quest"
+             value="3" min="1" max="80" step="1" size="2" style="max-width: 4.3rem">
+      <button class="btn btn-outline-dark mt-3">Lancer le Quizz assisté</button>
+    </form>
+    <p>&nbsp;</p>
+  </div>
+</div>
+{% endblock %}

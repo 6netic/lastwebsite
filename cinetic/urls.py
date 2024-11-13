@@ -9,6 +9,8 @@ urlpatterns = [
     path('', views.home, name='home'),
     path('mainsite/', include("mainsite.urls")),
     path('madishop/', include("madishop.urls")),
+    # path('purbeurre/', include("purbeurre.urls")),
+    path('hunting_quizz/', include("hunting_quizz.urls")),
 
     path('admin/', admin.site.urls),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

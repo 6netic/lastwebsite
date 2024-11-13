@@ -1,0 +1,31 @@
+{% extends 'hunting_quizz/base.html' %}
+{% load static %}
+{% block wrapper %}
+  <div id="presentation">
+    <p id="apprentissage-title">L'essentiel</p>
+    <table id="apprentissage-table">
+      {% for one in resume %}
+        <tr>
+          <td class="td4" colspan="2"></td>
+        </tr>
+        <tr>
+          <td class="td1"><img src="{{ one.image }}" /></td>
+          <td class="td2">{{ one.titre }}</td>
+        </tr>
+        <tr>
+          <td class="td3" colspan="2">{{ one.description }}</td>
+        </tr>
+      {% endfor %}
+        <tr>
+          <td class="td4" colspan="2"></td>
+        </tr>
+    </table>
+    <br />
+  {% for one in resumecat %}
+    <p class="titre1" align="left">{{ one.title }}</p>
+    <p class="paragraph1">{{ one.content }}</p>
+  {% endfor %}
+  <p><br /><br /></p>
+  </div>
+{% endblock %}
+

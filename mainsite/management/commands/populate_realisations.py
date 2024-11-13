@@ -27,9 +27,9 @@ class Command(BaseCommand):
             ],
             [
                 "Hunting Quizz",
-                "Quizz permettant de s'entraîner pour le passage à l'examen du permis de chasse. "
-                "2 modes sont proposés : normal (conditions réelles) et "
-                "assisté (solution détaillée affichée pour chaque réponse donnée).",
+                "Quizz permettant de s'entraîner pour le passage à l'examen du permis de chasse.<br>"
+                "2 modes sont proposés :<br>- normal (conditions réelles)<br>"
+                "- assisté (avec solution détaillée).",
                 "Django",
                 "../../hunting_quizz/"
             ],
@@ -48,7 +48,7 @@ class Command(BaseCommand):
             ],
             [
                 "PurBeurre",
-                "Site permettant de trouver un produit alimentaire plus sain que celui que vous lui proposez. "
+                "Site permettant de trouver un produit alimentaire plus sain que celui que vous lui proposez.<br>"
                 "Les données sont extraites d'OpenFoodFacts.",
                 "Django",
                 "../../purbeurre/"

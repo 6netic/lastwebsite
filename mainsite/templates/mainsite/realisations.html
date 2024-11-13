@@ -9,9 +9,8 @@
         <div class="col">
           <div class="card shadow-sm real-projets-bg">
             <div class="card-body">
-              <p class="card-title h5">{{ one.name }}</p>
-              <p class="card-text">{{ one.description }}</p>
-              <p class="card-text">{{ one.techno }}</p>
+              <p class="card-titre">{{ one.name }}</p>
+              <p class="card-texte">{{ one.description|safe }}</p>
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
                   <button type="button" class="btn btn-sm btn-outline-warning">
